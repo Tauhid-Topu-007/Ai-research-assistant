@@ -1,0 +1,47 @@
+# config/config.yaml
+project:
+  name: "AI Research Assistant"
+  version: "1.0.0"
+  
+data:
+  raw_path: "data/raw/"
+  processed_path: "data/processed/"
+  evaluation_path: "data/evaluation/"
+  
+chunking:
+  chunk_size: 600
+  overlap: 100
+  min_chunk_size: 100
+  
+embedding:
+  model_name: "BAAI/bge-base-en-v1.5"
+  dimension: 768
+  normalize: true
+  batch_size: 32
+  
+retrieval:
+  vector_k: 20
+  bm25_k: 20
+  hybrid_k: 20
+  final_k: 5
+  rrf_k: 60
+  
+reranker:
+  model_name: "BAAI/bge-reranker-base"
+  top_k: 5
+  
+llm:
+  provider: "groq"
+  model: "llama-3.1-8b-instant"  # This is the working model!
+  temperature: 0.0
+  max_tokens: 500
+  max_context_tokens: 4000
+  
+evaluation:
+  test_queries: 100
+  dev_queries: 30
+  k_values: [1, 3, 5, 10]
+  
+ui:
+  port: 8501
+  theme: "dark"

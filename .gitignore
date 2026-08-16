@@ -1,0 +1,319 @@
+# ============================================
+# Python
+# ============================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+pip-wheel-metadata/
+share/python-wheels/
+
+# ============================================
+# Virtual Environment
+# ============================================
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+.virtualenv/
+.conda/
+.conda-env/
+.venv/
+
+# ============================================
+# Environment & Secrets
+# ============================================
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+*.env
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+config/secrets.yaml
+config/credentials.yaml
+
+# ============================================
+# IDE / Editor
+# ============================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+.vim/
+.vimrc
+.emacs.d/
+.project
+.classpath
+.settings/
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries/
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+# ============================================
+# Jupyter Notebook
+# ============================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.ropeproject/
+
+# ============================================
+# Project Specific - Data & Outputs
+# ============================================
+data/raw/
+data/processed/
+data/evaluation/
+data/temp/
+*.pdf
+*.docx
+*.doc
+*.pptx
+*.xlsx
+*.xls
+*.csv
+*.json
+*.db
+*.sqlite
+*.sqlite3
+
+# ============================================
+# Output Directories
+# ============================================
+outputs/
+output/
+results/
+logs/
+*.log
+*.out
+*.err
+
+# ============================================
+# Cache & Temporary Files
+# ============================================
+cache/
+.cache/
+*.cache
+*.tmp
+*.temp
+*.temp/*
+temp/
+tmp/
+*.temp
+*.tmp
+*.bak
+*.backup
+*.old
+
+# ============================================
+# Model Cache (Large Files)
+# ============================================
+cache/models/
+cache/sentence-transformers/
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.onnx
+*.tflite
+*.pb
+*.safetensors
+*.model
+*.weights
+
+# ============================================
+# Vector Indexes
+# ============================================
+*.faiss
+*.ann
+*.h5
+*.index
+vectors/
+embeddings/
+index/
+
+# ============================================
+# Documentation
+# ============================================
+docs/_build/
+docs/api/
+site/
+*.pdf
+*.epub
+*.mobi
+
+# ============================================
+# Testing
+# ============================================
+.pytest_cache/
+.pytest/
+.coverage
+htmlcov/
+.tox/
+.hypothesis/
+*.cover
+*.py,cover
+tests/__pycache__/
+tests/*.pyc
+
+# ============================================
+# OS Specific
+# ============================================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+.recycle/
+.svn/
+.git/
+
+# ============================================
+# Flask / FastAPI / Streamlit
+# ============================================
+instance/
+.webassets-cache
+.env
+.flaskenv
+*.pid
+*.sock
+.venv/
+
+# ============================================
+# Database
+# ============================================
+*.db
+*.sqlite
+*.sqlite3
+*.mdb
+*.accdb
+*.frm
+*.ibd
+*.myd
+*.myi
+
+# ============================================
+# Backup Files
+# ============================================
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+*.patch
+*.diff
+
+# ============================================
+# Miscellaneous
+# ============================================
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.bz2
+*.xz
+*.iso
+*.dmg
+*.pkg
+*.msi
+
+# ============================================
+# Docker
+# ============================================
+docker-compose.override.yml
+docker-compose.*.yml
+.dockerignore
+Dockerfile.*
+.docker/
+
+# ============================================
+# Monitoring
+# ============================================
+*.metrics
+*.stats
+*.prom
+*.grafana
+
+# ============================================
+# Large Files (Optional - Uncomment if needed)
+# ============================================
+# *.pdf
+# *.mp4
+# *.avi
+# *.mov
+# *.wmv
+# *.flv
+# *.mkv
+# *.mp3
+# *.wav
+# *.flac
+# *.aac
+# *.ogg
+# *.wma
+# *.zip
+# *.rar
+# *.7z
+# *.tar
+# *.gz
