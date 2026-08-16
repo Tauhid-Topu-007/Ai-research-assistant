@@ -1,37 +1,37 @@
 # Core
-chardet==5.2.0
+chardet
 
 # PDF Processing
-pymupdf==1.23.8
-pdfplumber==0.10.3
-beautifulsoup4==4.12.2
-lxml==5.1.0
+pymupdf
+pdfplumber
+beautifulsoup4
+lxml
 
 # NLP & Embeddings
-sentence-transformers==2.3.0
-transformers==4.37.0
+sentence-transformers
+transformers
 
 # Vector Database
-faiss-cpu==1.8.0
+faiss-cpu
 
 # Retrieval
-rank-bm25==0.2.2
+rank-bm25
 
 # RAG Framework - Using correct versions
-langchain==0.1.4
-langchain-community==0.0.35  # Changed from 0.1.0 (doesn't exist)
-langgraph==0.0.20
+langchain
+langchain-community # Changed from 0.1.0 (doesn't exist)
+langgraph
 
 # LLM
-groq==0.4.1
+groq
 
 # Web Framework
-streamlit==1.29.0
+streamlit
 
 # Utilities
-python-dotenv==1.0.0
-pyyaml==6.0.1
-tqdm==4.66.1
-requests==2.31.0
-numpy==1.24.3
-pandas==2.0.3
+python-dotenv
+pyyaml
+tqdm
+requests
+numpy
+pandas
