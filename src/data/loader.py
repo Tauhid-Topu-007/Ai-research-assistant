@@ -5,9 +5,8 @@ import logging
 from typing import List, Dict, Any
 from pathlib import Path
 
-import PyPDF2
 import pdfplumber
-import fitz  # PyMuPDF
+import pymupdf  # Use pymupdf instead of fitz
 from bs4 import BeautifulSoup
 
 # Try to import chardet, fallback to built-in if not available
@@ -16,7 +15,6 @@ try:
     HAS_CHARDET = True
 except ImportError:
     HAS_CHARDET = False
-    import codecs
     logging.warning("chardet not installed. Using fallback encoding detection.")
 
 logger = logging.getLogger(__name__)
@@ -30,18 +28,18 @@ class DocumentLoader:
         self.processed_path = Path(config['data']['processed_path'])
         self.processed_path.mkdir(parents=True, exist_ok=True)
         
-    def load_pdf_pypdf(self, file_path: str) -> str:
-        """Load PDF using PyPDF2."""
+    def load_pdf_pymupdf(self, file_path: str) -> str:
+        """Load PDF using PyMuPDF (fastest)."""
         text = ""
         try:
-            with open(file_path, 'rb') as file:
-                reader = PyPDF2.PdfReader(file)
-                for page in reader.pages:
-                    page_text = page.extract_text()
-                    if page_text:
-                        text += page_text
+            doc = pymupdf.open(file_path)
+            for page in doc:
+                page_text = page.get_text()
+                if page_text:
+                    text += page_text
+            doc.close()
         except Exception as e:
-            logger.error(f"PyPDF2 error for {file_path}: {e}")
+            logger.error(f"PyMuPDF error for {file_path}: {e}")
         return text
     
     def load_pdf_pdfplumber(self, file_path: str) -> str:
@@ -57,27 +55,12 @@ class DocumentLoader:
             logger.error(f"pdfplumber error for {file_path}: {e}")
         return text
     
-    def load_pdf_pymupdf(self, file_path: str) -> str:
-        """Load PDF using PyMuPDF (fastest)."""
-        text = ""
-        try:
-            doc = fitz.open(file_path)
-            for page in doc:
-                page_text = page.get_text()
-                if page_text:
-                    text += page_text
-        except Exception as e:
-            logger.error(f"PyMuPDF error for {file_path}: {e}")
-        return text
-    
     def detect_encoding(self, raw_data: bytes) -> str:
         """Detect encoding of text data."""
         if HAS_CHARDET:
-            # Use chardet for better detection
             result = chardet.detect(raw_data)
             return result.get('encoding', 'utf-8')
         else:
-            # Fallback: try common encodings
             encodings = ['utf-8', 'latin-1', 'cp1252', 'iso-8859-1']
             for encoding in encodings:
                 try:
@@ -85,7 +68,7 @@ class DocumentLoader:
                     return encoding
                 except UnicodeDecodeError:
                     continue
-            return 'utf-8'  # Default fallback
+            return 'utf-8'
     
     def load_text(self, file_path: str) -> str:
         """Load text file with encoding detection."""
@@ -123,12 +106,11 @@ class DocumentLoader:
         text = ""
         
         if file_ext == '.pdf':
-            # Try multiple methods for better extraction
+            # Try PyMuPDF first (fastest)
             text = self.load_pdf_pymupdf(str(file_path))
+            # Fallback to pdfplumber if PyMuPDF fails
             if not text.strip():
                 text = self.load_pdf_pdfplumber(str(file_path))
-            if not text.strip():
-                text = self.load_pdf_pypdf(str(file_path))
                 
         elif file_ext in ['.txt', '.md']:
             text = self.load_text(str(file_path))
